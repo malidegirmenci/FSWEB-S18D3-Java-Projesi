@@ -29,9 +29,10 @@ MIN-MAX, COUNT-AVG-SUM, GROUP BY, JOINS (INNER, OUTER, LEFT, RIGHT
 	#ilk 3 soruyu join kullanmadan yazın.  
  
 	1) Öğrencinin adını, soyadını ve kitap aldığı tarihleri listeleyin.  
-	
+	 	 SELECT o.ograd, o.ogrsoyad, i.atarih FROM ogrenci AS o, islem AS i 
+	         WHERE o.ogrno = i.ogrno 
+	         ORDER BY o.ogrno ASC;
 
-	
 	2) Fıkra ve hikaye türündeki kitapların adını ve türünü listeleyin.
 	
 	
