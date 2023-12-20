@@ -26,6 +26,7 @@ Aşağıda istenilen sonuçlara ulaşabilmek için gerekli SQL sorgularını yaz
 
 
 MIN-MAX, COUNT-AVG-SUM, GROUP BY, JOINS (INNER, OUTER, LEFT, RIGHT
+
 	#ilk 3 soruyu join kullanmadan yazın.  
  
 	1) Öğrencinin adını, soyadını ve kitap aldığı tarihleri listeleyin.  
@@ -34,31 +35,55 @@ MIN-MAX, COUNT-AVG-SUM, GROUP BY, JOINS (INNER, OUTER, LEFT, RIGHT
 	         ORDER BY o.ogrno ASC;
 
 	2) Fıkra ve hikaye türündeki kitapların adını ve türünü listeleyin.
-	
+		 SELECT k.kitapadi, t.turadi FROM kitap AS k, tur AS t 
+   		 WHERE k.turno = t.turno 
+        	 ORDER BY k.kitapadi ASC; 
 	
 	3) 10B veya 10C sınıfındaki öğrencilerin numarasını, adını, soyadını ve okuduğu kitapları listeleyin.
-	
+		 SELECT o.ogrno, o.ograd, o.ogrsoyad, k.kitapadi FROM ogrenci AS o, islem AS i, kitap AS k 
+     		 WHERE o.sinif IN ("10B", "10C") AND o.ogrno = i.ogrno AND i.kitapno = k.kitapno 
+		 ORDER BY o.ograd, o.ogrsoyad; 
+	  
 	#join ile yazın
 	4) Öğrencinin adını, soyadını ve kitap aldığı tarihleri listeleyin.
-	
+		 SELECT o.ograd, o.ogrsoyad, i.atarih FROM ogrenci AS o 
+   		 INNER JOIN islem AS i 
+      		 WHERE o.ogrno = i.ogrno
+	 	 ORDER BY o.ogrno ASC;
 	
 	5) Fıkra ve hikaye türündeki kitapların adını ve türünü listeleyin.
-	
-	
+		 SELECT k.kitapadi, t.turadi FROM kitap AS k
+   		 INNER JOIN tur AS t ON k.turno = t.turno
+        	 ORDER BY k.kitapadi ASC; 
+ 	
 	6) 10B veya 10C sınıfındaki öğrencilerin numarasını, adını, soyadını ve okuduğu kitapları, öğrenci adına göre listeleyin.
-	
+		 SELECT o.ograd, o.ogrsoyad, k.kitapadi FROM ogrenci AS o 
+   		 INNER JOIN islem AS i ON o.ogrno = i.ogrno 
+      		 INNER JOIN kitap AS k ON k.kitapno = i.kitapno 
+	 	 WHERE o.sinif IN ("10A", "10B") 
+    		 ORDER BY o.ogrno, o.ogrsoyad ASC;
 	
 	7) Kitap alan öğrencinin adı, soyadı, kitap aldığı tarih listelensin. Kitap almayan öğrencilerinde listede görünsün.
-	
+		 SELECT o.ograd, o.ogrsoyad, i.islemno FROM ogrenci AS o 
+   		 LEFT JOIN islem AS i ON o.ogrno = i.ogrno 
+      		 ORDER BY i.islemno;
 	
 	8) Kitap almayan öğrencileri listeleyin.
-	
+		 SELECT o.ograd, o.ogrsoyad, i.islemno FROM ogrenci AS o 
+  		 LEFT JOIN islem AS i ON o.ogrno = i.ogrno 
+     	  	 HAVING i.islemno IS NULL 
+	  	 ORDER BY o.ograd, o.ogrsoyad;
 	
 	9) Alınan kitapların kitap numarasını, adını ve kaç defa alındığını kitap numaralarına göre artan sırada listeleyiniz.
-	
+		 SELECT k.kitapno, k.kitapadi, COUNT(k.kitapno) FROM islem AS i 
+    		 INNER JOIN kitap AS k ON i.kitapno=k.kitapno 
+       		 GROUP BY k.kitapno, k.kitapadi;
 	
 	10) Alınan kitapların kitap numarasını, adını kaç defa alındığını (alınmayan kitapların yanında 0 olsun) listeleyin.
-
+		 SELECT k.kitapno, k.kitapadi, COUNT(i.kitapno) FROM islem AS i 
+		 RIGHT JOIN kitap AS k ON k.kitapno=i.kitapno 
+		 GROUP BY k.kitapno, k.kitapadi 
+		 ORDER BY COUNT(i.kitapno)
 
 	11) Öğrencilerin adı soyadı ve aldıkları kitabın adı listelensin.
 	
