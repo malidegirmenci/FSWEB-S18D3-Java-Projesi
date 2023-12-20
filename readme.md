@@ -26,7 +26,7 @@ Aşağıda istenilen sonuçlara ulaşabilmek için gerekli SQL sorgularını yaz
 
 
 MIN-MAX, COUNT-AVG-SUM, GROUP BY, JOINS (INNER, OUTER, LEFT, RIGHT
-	#ilk 3 soruyu join kullanmadan yazın.
+	#ilk 3 soruyu join kullanmadan yazın.  
  
 	1) Öğrencinin adını, soyadını ve kitap aldığı tarihleri listeleyin.  
 	
