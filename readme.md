@@ -76,8 +76,8 @@ MIN-MAX, COUNT-AVG-SUM, GROUP BY, JOINS (INNER, OUTER, LEFT, RIGHT
 	
 	9) Alınan kitapların kitap numarasını, adını ve kaç defa alındığını kitap numaralarına göre artan sırada listeleyiniz.
 		 SELECT k.kitapno, k.kitapadi, COUNT(k.kitapno) FROM islem AS i 
-    		 INNER JOIN kitap AS k ON i.kitapno=k.kitapno 
-       		 GROUP BY k.kitapno, k.kitapadi;
+   		 INNER JOIN kitap AS k ON i.kitapno=k.kitapno 
+      		 GROUP BY k.kitapno, k.kitapadi;
 	
 	10) Alınan kitapların kitap numarasını, adını kaç defa alındığını (alınmayan kitapların yanında 0 olsun) listeleyin.
 		 SELECT k.kitapno, k.kitapadi, COUNT(i.kitapno) FROM islem AS i 
