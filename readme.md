@@ -37,7 +37,7 @@ MIN-MAX, COUNT-AVG-SUM, GROUP BY, JOINS (INNER, OUTER, LEFT, RIGHT
 	2. Fıkra ve hikaye türündeki kitapların adını ve türünü listeleyin.
 		SELECT k.kitapadi, t.turadi FROM kitap AS k, tur AS t 
    		WHERE k.turno = t.turno 
-        ORDER BY k.kitapadi ASC; 
+        	ORDER BY k.kitapadi ASC; 
 	
 	3. 10B veya 10C sınıfındaki öğrencilerin numarasını, adını, soyadını ve okuduğu kitapları listeleyin.
 		SELECT o.ogrno, o.ograd, o.ogrsoyad, k.kitapadi FROM ogrenci AS o, islem AS i, kitap AS k 
